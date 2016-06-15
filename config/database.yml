@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: root
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: QuizMaster_development
+
+test:
+  <<: *default
+  database: QuizMaster_test
+
+production:
+  database: QuizMaster_production
+  username: QuizMaster
+  password: <%= ENV['QUIZMASTER_DATABASE_PASSWORD'] %>
