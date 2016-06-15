@@ -13,3 +13,5 @@
 /tmp
 .keep
 Gemfile.lock
+*.patch
+.DS_Store

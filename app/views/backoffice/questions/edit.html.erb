@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-heading text-center">
+    Update Question
+  </div>
+  <div class="panel-body">
+    <%= form_for :question, url: { action: 'update', id: @question.id }, html: { method: 'put'} do |f| %>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="content">Content</label>
+          <%= f.text_area :content, class: "form-control", id: 'content', cols: 4, rows: 5, placeholder: 'Question content' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="answer">Answer</label>
+          <%= f.text_area :answer, class: "form-control", id: 'answer', cols: 4, rows: 5, placeholder: 'Question answer' %>
+        </div>
+      </div>
+      <div class="row">
+        <%= f.submit "Submit", class: 'btn btn-sm btn-primary col-md-1', style: 'margin-left:20px;'%>
+        <%= link_to 'Back', { action: nil }, class: 'btn btn-sm btn-primary col-md-1', style: 'margin-left:10px' %>
+      </div>
+    <% end %>
+  </div>
+</div>

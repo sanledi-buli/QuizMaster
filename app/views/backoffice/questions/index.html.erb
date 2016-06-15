@@ -1,0 +1,30 @@
+<div class="row">
+  <%= link_to 'Add question', { action: 'new'}, class: 'btn btn-success btn-sm', style: 'margin-left:15px;'%>
+</div>
+<div class="panel panel-default" style="margin-top: 10px;">
+  <div class="panel-heading">
+    Questions List
+  </div>
+  <div class="panel-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>CONTENT</th>
+          <th>ANSWER</th>
+          <th style="text-align:center;">ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @questions.each do |question| %>
+          <tr>
+            <td><%= question.id %></td>
+            <td><%= question.content %></td>
+            <td><%= question.answer %></td>
+            <td align="center"><%= link_to 'EDIT', {action: 'edit', id: question.id }, class: 'btn btn-primary btn-sm' %> <%= link_to 'DELETE', {action: 'destroy', id: question.id }, method: :delete, class: 'btn btn-danger btn-sm', data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
