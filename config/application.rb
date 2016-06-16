@@ -14,6 +14,7 @@ Bundler.require(*Rails.groups)
 module QuizMaster
   class Application < Rails::Application
     config.generators.assets = false
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
     config.active_record.raise_in_transactional_callbacks = true
     config.generators do |g|
       g.factory_girl false

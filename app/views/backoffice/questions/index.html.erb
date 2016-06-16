@@ -19,8 +19,8 @@
         <% @questions.each do |question| %>
           <tr>
             <td><%= question.id %></td>
-            <td><%= question.content %></td>
-            <td><%= question.answer %></td>
+            <td><%= question.content.html_safe %></td>
+            <td><%= question.answer.html_safe %></td>
             <td align="center"><%= link_to 'EDIT', {action: 'edit', id: question.id }, class: 'btn btn-primary btn-sm' %> <%= link_to 'DELETE', {action: 'destroy', id: question.id }, method: :delete, class: 'btn btn-danger btn-sm', data: {confirm: 'Are you sure?'} %></td>
           </tr>
         <% end %>

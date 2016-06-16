@@ -6,6 +6,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'humanize', '~> 1.1', '>= 1.1.1'
 gem 'turbolinks'
+gem 'bootstrap-wysihtml5-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'

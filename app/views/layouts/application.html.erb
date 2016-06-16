@@ -14,5 +14,31 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      $(function() {
+        $('#content').wysihtml5(
+          {
+            'toolbar': 
+            {
+              'blockquote': false,
+              'html': true, 
+              'link' : false, 
+              'image': false,
+              'lists': false
+            }
+          })
+        $('#answer').wysihtml5(
+          {
+            'toolbar': 
+            {
+              'blockquote': false, 
+              'html': true, 
+              'link' : false, 
+              'image': false,
+              'lists': false
+            }
+          })
+      })
+    </script>
   </body>
 </html>
