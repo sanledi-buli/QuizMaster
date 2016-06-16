@@ -13,4 +13,11 @@ This application for sample Quiz.
 
 ## Setting up the project
 
-//TODO
+1. git clone https://github.com/sanledi-buli/QuizMaster.git
+2. cd QuizMaster
+3. set up database.yml
+4. bundle install
+5. rake db:create
+6. rake db:migrate
+7. rake assets:precompile RAILS_ENV=development
+8. rails s
