@@ -29,4 +29,35 @@ RSpec.describe Question, type: :model do
       end
     end
   end
+
+  describe "validate quiz mode" do
+    context "answer is correct" do
+      it 'should correct if string equal' do
+        question = FactoryGirl.create(:question, answer: 'foo bar')
+        expect(question.answer_is_valid?('foo bar')).to eq(true)
+      end
+
+      it 'should correct if contains white space' do
+        question = FactoryGirl.create(:question, answer: 'foo bar')
+        expect(question.answer_is_valid?('  foo bar')).to eq(true)
+      end
+
+      it 'should recognise the number as words if answer is a number' do
+        question = FactoryGirl.create(:question, answer: '26')
+        expect(question.answer_is_valid?('twenty six')).to eq(true)
+      end
+
+      it 'should recognise the number as words if answer contains a number' do
+        question = FactoryGirl.create(:question, answer: 'foo bar 26 baz')
+        expect(question.answer_is_valid?('foo bar twenty six baz')).to eq(true)
+      end
+    end
+
+    context 'answer is incorrect' do
+      it 'should incorrect if string not equal' do
+        question = FactoryGirl.create(:question, answer: 'foo bar')
+        expect(question.answer_is_valid?('bar foo')).to eq(false)
+      end
+    end
+  end
 end
