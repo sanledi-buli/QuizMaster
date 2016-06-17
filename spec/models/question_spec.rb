@@ -42,6 +42,11 @@ RSpec.describe Question, type: :model do
         expect(question.answer_is_valid?('  foo bar')).to eq(true)
       end
 
+      it 'should correct if answer is capitalize' do
+        question = FactoryGirl.create(:question, answer: 'foo bar baz')
+        expect(question.answer_is_valid?('FOO bar BaZ')).to eq(true)
+      end
+
       it 'should recognise the number as words if answer is a number' do
         question = FactoryGirl.create(:question, answer: '26')
         expect(question.answer_is_valid?('twenty six')).to eq(true)
@@ -51,6 +56,12 @@ RSpec.describe Question, type: :model do
         question = FactoryGirl.create(:question, answer: 'foo bar 26 baz')
         expect(question.answer_is_valid?('foo bar twenty six baz')).to eq(true)
       end
+
+      it 'should recognize the words as a number' do
+        question = FactoryGirl.create(:question, answer: 'foo bar seven baz')
+        expect(question.answer_is_valid?('foo bar 7 baz')).to eq(true)
+      end
+
     end
 
     context 'answer is incorrect' do
