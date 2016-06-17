@@ -9,7 +9,7 @@ This application for sample Quiz.
 ## TODO
 
 - [x] Manage the questions.
-- [ ] Quiz mode.
+- [x] Quiz mode.
 
 ## Setting up the project
 
