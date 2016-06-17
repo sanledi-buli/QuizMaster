@@ -21,3 +21,7 @@ This application for sample Quiz.
 6. rake db:migrate
 7. rake assets:precompile RAILS_ENV=development
 8. rails s
+
+## Backoffice
+
+http://localhost:3000/backoffice/questions

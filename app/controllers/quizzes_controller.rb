@@ -7,7 +7,7 @@ class QuizzesController < ApplicationController
     else
       @question = Question.first
     end
-    @question.answer = nil
+    @question.answer = nil if !@question.nil?
   end
 
   def create
