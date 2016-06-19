@@ -1,0 +1,25 @@
+<%= form_for :question, url: { action: 'create', id: @question.id }, html: { method: 'post'} do |f| %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="content">Qustion:</label>
+      <p><%= @question.content.html_safe %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="answer">Answer:</label>
+      <%= f.text_area :answer, class: "form-control", id: 'answer-quiz-mode', cols: 4, rows: 5, placeholder: 'Question answer' %>
+    </div>
+    <div class="col-md-6">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-danger fade in" style="margin-top:50px;">
+          <button class="close" data-dismiss="alert">×</button>
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <%= f.submit "Submit", class: 'btn btn-sm btn-primary col-md-1', style: 'margin-left:20px;'%>
+  </div>
+<% end %>
