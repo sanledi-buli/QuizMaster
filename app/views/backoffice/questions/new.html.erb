@@ -11,15 +11,16 @@
           <%= f.text_area :content, class: "form-control", id: 'content', cols: 4, rows: 5, placeholder: 'Question content' %>
         </div>
         <div class="col-md-6">
-          <% @question.errors.each do |attr,msg|  %>
-            <%= attr %> <%= msg %>
-          <% end %>
+          <font color="red"><%= @question.errors[:content][0] %></font>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-6">
           <label for="answer">Answer</label>
           <%= f.text_area :answer, class: "form-control", id: 'answer', cols: 4, rows: 5, placeholder: 'Question answer' %>
+        </div>
+        <div class="col-md-6">
+          <font color="red"><%= @question.errors[:answer][0] %></font>
         </div>
       </div>
       <div class="row">

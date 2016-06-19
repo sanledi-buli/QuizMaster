@@ -42,6 +42,11 @@ RSpec.describe Backoffice::QuestionsController, type: :controller do
       expect(response).to redirect_to action: 'index'
     end
 
+    it 'should has flash success created' do
+      post :create, question: FactoryGirl.attributes_for(:question)
+      expect(flash[:notice]).to eq('Question was successfully created.')
+    end
+
     it 'should not save the new question' do
       expect{
         post :create, question: {content: nil, answer: 'sss'}
@@ -67,23 +72,28 @@ RSpec.describe Backoffice::QuestionsController, type: :controller do
       @question = create_question_with_options({content: 'foo', answer: 'baz'})
     end
 
-    it 'should same atributes' do
+    it 'should same attributes' do
       put :update, id: @question, question: FactoryGirl.attributes_for(:question)
       expect(assigns(:question)).to eq(@question)
     end
 
-    it 'should change content atribute' do
+    it 'should change content attribute' do
       put :update, id: @question, question: FactoryGirl.attributes_for(:question, content: 'bar', answer: @question.answer)
       @question.reload
       expect(@question.content).to eq('bar')
       expect(@question.answer).to eq('baz')
     end
 
-    it 'should change answer atribute' do
+    it 'should change answer attribute' do
       put :update, id: @question, question: FactoryGirl.attributes_for(:question, content: @question.content, answer: 'foo')
       @question.reload
       expect(@question.content).to eq('foo')
       expect(@question.answer).to eq('foo')
+    end
+
+    it 'should has flash success updated' do
+      put :update, id: @question, question: FactoryGirl.attributes_for(:question, content: 'bar', answer: 'foo')
+      expect(flash[:notice]).to eq('Question was successfully updated.')
     end
 
     it 'should redirect to index' do
@@ -91,14 +101,14 @@ RSpec.describe Backoffice::QuestionsController, type: :controller do
       expect(response).to redirect_to action: 'index'
     end
 
-    it 'should not change content atribute' do
+    it 'should not change content attribute' do
       put :update, id: @question, question: FactoryGirl.attributes_for(:question, content: 'bar', answer: nil)
       @question.reload
       expect(@question.content).to eq('foo')
       expect(@question.answer).to eq('baz')
     end
 
-    it 'should not change answer atribute' do
+    it 'should not change answer attribute' do
       put :update, id: @question, question: FactoryGirl.attributes_for(:question, content: nil, answer: 'foo')
       @question.reload
       expect(@question.content).to eq('foo')
@@ -117,6 +127,12 @@ RSpec.describe Backoffice::QuestionsController, type: :controller do
       expect{
         delete :destroy, id: question        
       }.to change(Question,:count).by(-1)
+    end
+
+    it 'should has flash success deleted' do
+      question = FactoryGirl.create(:question)
+      delete :destroy, id: question
+      expect(flash[:notice]).to eq('Question was successfully deleted.')
     end
 
     it 'should redirect to index' do

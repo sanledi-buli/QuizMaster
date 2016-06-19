@@ -12,6 +12,7 @@ class Backoffice::QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
+      flash[:notice] = "Question was successfully created."
       redirect_to action: 'index'
     else
       render 'new' 
@@ -24,8 +25,8 @@ class Backoffice::QuestionsController < ApplicationController
 
   def update
     @question = Question.find params[:id]
-
     if @question.update(question_params)
+      flash[:notice] = "Question was successfully updated."
       redirect_to action: 'index'
     else
       render 'edit'
@@ -35,7 +36,7 @@ class Backoffice::QuestionsController < ApplicationController
   def destroy
     @question = Question.find params[:id]
     @question.destroy
-
+    flash[:notice] = "Question was successfully deleted."
     redirect_to action: 'index'
   end
 

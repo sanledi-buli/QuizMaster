@@ -1,4 +1,12 @@
 <div class="row">
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-success %> fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= msg %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
   <%= link_to 'Add question', { action: 'new'}, class: 'btn btn-success btn-sm', style: 'margin-left:15px;'%>
 </div>
 <div class="panel panel-default" style="margin-top: 10px;">
