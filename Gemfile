@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'humanize', :git => 'git://github.com/sanledi-buli/humanize', :branch => 'master'
 gem 'turbolinks'
 gem 'bootstrap-wysihtml5-rails'
+gem 'uglifier'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
@@ -18,5 +19,11 @@ end
 group :development do
   gem 'thin', '~> 1.6', '>= 1.6.4'
   gem 'web-console', '~> 2.0'
+end
+
+group :production do
+  gem 'pg'
+  gem 'puma'
+  gem 'rails_12factor'
 end
 

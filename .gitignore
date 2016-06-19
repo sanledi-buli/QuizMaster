@@ -12,7 +12,6 @@
 !/log/.keep
 /tmp
 .keep
-Gemfile.lock
 *.patch
 .DS_Store
 .byebug_history
