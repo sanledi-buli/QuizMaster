@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root :to => 'quizzes#index'
   namespace :backoffice do
-    resources :questions
+  	put '/questions/:id', to: 'questions#update'
+    resources :questions, except: [:show,:update]
   end
 
   get "/quizzes", to: "quizzes#index"
